@@ -106,3 +106,17 @@ def image_to_base64(image_path):
     """
     with open(image_path, "rb") as img_file:
         return base64.b64encode(img_file.read()).decode('utf-8')
+# 과제:팀 이름 입력
+team = "소속팀(농구/야구/축구/E-Sports)"
+# 과제:사진을 반드시 동일 폴더 안에 넣고 파일명을 입력해주세요
+photo_path = "image.jpg"
+# 과제 네 줄 이하(공백포함 영어 270자, 한글 130자 이내)의 짧은 소개글을 써주세요
+introduction = "Hello! I am part of the AI Development Team and have a strong interest in Python programming and data analysis.Hello! I am part of the AI Development Team and have a strong interest in Python programming and data analysis. Hello! I am part of the AI Development and have a"
+
+# User inputs
+name = input("Enter your name: ")
+student_major = input("Enter your major: ")
+
+
+# Generate and save profile as an image
+generate_profile(name, student_major, team, photo_path, introduction, output_image_path="profile_output.png")
