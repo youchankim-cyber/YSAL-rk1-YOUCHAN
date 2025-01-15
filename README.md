@@ -16,4 +16,4 @@
 1. venv를 통해 가상환경 구현 해보기
 2. requirements.txt 라이브러리 설치하기
 3. 나만의 Git Convention 정해서 commit message 작성하기
-4. .gitignore 반드시 생성해보기
+4. .gitignore 반드시 확인해보기

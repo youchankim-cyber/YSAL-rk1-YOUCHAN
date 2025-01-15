@@ -12,29 +12,28 @@ def generate_profile(name, student_major, team, photo_path, introduction, output
     if photo_path:
         base64_photo = image_to_base64(photo_path)
         photo_tag = f'<img src="data:image/jpeg;base64,{base64_photo}" alt="Profile Photo" class="profileImg" />'
-    base64_background = image_to_base64("basketball.jpg")
 
     # HTML content with embedded CSS for the layout
     div_content = f"""
+    <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=IBM+Plex+Sans+KR:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         body {{
             margin: 0;
+            font-family: 'Jua', "Arial", sans-serif;  /* 한글 폰트 지정 */
             padding: 0;
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            background-color: #000;
+            background-color: white;
         }}
         .card {{
             font-family: Arial, sans-serif;
-            background-image: url('data:image/webp;base64,{base64_background}');
-            background-size: cover;
             width: 1920px;
             height: 1080px;
             display: flex;
             box-sizing: border-box;
-            color: white;
+            color: black;
         }}
         .photo-container {{
             flex: 1.5;
@@ -55,13 +54,37 @@ def generate_profile(name, student_major, team, photo_path, introduction, output
             display: flex;
             color: black;
             flex-direction: column;
-            justify-content: center;
+            padding-top: 150px;
+            padding-left: 100px;
+            justify-content: top;
         }}
         .content h1 {{
             margin-bottom: 20px;
+            font-size: 80px;
         }}
-        .content p {{
-            margin: 10px 0;
+        .name {{
+            font-size: 180px;
+            margin: 0;
+            font-family: "IBM Plex Sans KR", serif;
+            font-weight: 700;
+            font-style: normal;
+            padding-left: 30px;
+        }}
+        .major {{
+            font-size: 90px;
+            margin: 0;
+            font-family: "IBM Plex Sans KR", serif;
+            font-weight: 600;
+            padding-left: 30px;
+        }}
+        .intr {{
+            font-size: 60px;
+            margin: 0;
+            font-family: "IBM Plex Sans KR", serif;
+            font-weight: 400;
+            padding-top: 30px;
+            padding-left: 30px;
+            word-wrap: break-word;
         }}
     </style>
     <div class="card">
@@ -69,12 +92,9 @@ def generate_profile(name, student_major, team, photo_path, introduction, output
             {photo_tag}
         </div>
         <div class="content">
-            <h1>Profile</h1>
-            <p><strong>Name:</strong> {name}</p>
-            <p><strong>Major:</strong> {student_major}</p>
-            <p><strong>Team:</strong> {team}</p>
-            <h3>Introduction</h3>
-            <p>{introduction}</p>
+            <p class="name"><strong>{name}</strong></p>
+            <p class="major"><strong>{team}팀/{student_major}</strong></p>
+            <p class="intr">{introduction}</p>
         </div>
     </div>
     """
@@ -97,15 +117,17 @@ def image_to_base64(image_path):
     """
     with open(image_path, "rb") as img_file:
         return base64.b64encode(img_file.read()).decode('utf-8')
+#과제--------------------------------------------------------------------------------
+# 과제-1:팀 이름 입력(농구/야구/축구/E-Sports 중 적어주세요)
+team = "농구"
 
-# 과제-1:팀 이름 입력
-team = "소속팀(농구/야구/축구/E-Sports)"
-# 과제-2:본인을 나타내는 사진을 !반드시! 동일 폴더 안에 넣고 파일명을 입력해주세요
-photo_path = "image.jpg"
-# 과제-3 네 줄 이하(공백포함 영어 270자, 한글 130자 이내)의 짧은 소개글을 써주세요
-introduction = "Hello! I am part of the AI Development Team and have a strong interest in Python programming and data analysis."
+# 과제-2:본인을 나타내는 사진을 !반드시! 동일 폴더 안에 넣고 아래에 옳은 파일명을 입력해주세요
+photo_path = 'image.jpg'
 
-# User inputs
+# 과제-3 한 줄 이내의 짧은 소개글을 써주세요
+introduction = "안녕하세요! 농구 팀장 남의서입니다. <br> DB💚Celtics 응원합니다ㅎㅎ"
+# 이후 실행하고
+# 터미널에 입력할 User inputs(이름, 전공)
 name = input("Enter your name: ")
 student_major = input("Enter your major: ")
 
